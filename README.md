@@ -6,7 +6,7 @@ TaskCreate/TaskUpdate tool family.
 
 ## Installation
 
-    pi install npm:rpiv-todo
+    pi install npm:@juicesharp/rpiv-todo
 
 Then restart your Pi session.
 
