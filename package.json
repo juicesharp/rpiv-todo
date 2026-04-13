@@ -1,0 +1,16 @@
+{
+  "name": "rpiv-todo",
+  "version": "0.1.0",
+  "description": "Pi extension: Claude-Code-parity todo tool + persistent overlay widget",
+  "keywords": ["pi-package", "pi-extension", "rpiv", "todo"],
+  "type": "module",
+  "pi": {
+    "extensions": ["./index.ts"]
+  },
+  "peerDependencies": {
+    "@mariozechner/pi-ai": "*",
+    "@mariozechner/pi-coding-agent": "*",
+    "@mariozechner/pi-tui": "*",
+    "@sinclair/typebox": "*"
+  }
+}
