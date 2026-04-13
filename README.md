@@ -4,6 +4,8 @@ Pi extension that registers the `todo` tool, `/todos` slash command, and a
 persistent TodoOverlay widget above the editor. Replaces Claude Code's
 TaskCreate/TaskUpdate tool family.
 
+![Todo overlay widget above the Pi editor](https://raw.githubusercontent.com/juicesharp/rpiv-todo/main/docs/overlay.jpg)
+
 ## Installation
 
     pi install npm:@juicesharp/rpiv-todo
