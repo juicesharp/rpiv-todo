@@ -16,6 +16,17 @@ import { Text } from "@mariozechner/pi-tui";
 import { Type } from "@sinclair/typebox";
 
 // ---------------------------------------------------------------------------
+// Constants — tool/command identity and static user-facing strings
+// ---------------------------------------------------------------------------
+
+export const TOOL_NAME = "todo";
+const TOOL_LABEL = "Todo";
+const COMMAND_NAME = "todos";
+
+const ERR_REQUIRES_INTERACTIVE = "/todos requires interactive mode";
+const MSG_NO_TODOS = "No todos yet. Ask the agent to add some!";
+
+// ---------------------------------------------------------------------------
 // Types
 // ---------------------------------------------------------------------------
 
@@ -611,8 +622,8 @@ const TodoParams = Type.Object({
 
 export function registerTodoTool(pi: ExtensionAPI): void {
 	pi.registerTool({
-		name: "todo",
-		label: "Todo",
+		name: TOOL_NAME,
+		label: TOOL_LABEL,
 		description:
 			"Manage a task list for tracking multi-step progress. Actions: create (new task), update (change status/fields/dependencies), list (all tasks, optionally filtered by status), get (single task details), delete (tombstone), clear (reset all). Status: pending → in_progress → completed, plus deleted tombstone. Use this to plan and track multi-step work like research, design, and implementation.",
 		promptSnippet: "Manage a Claude-Code-style task list to track multi-step progress",
@@ -708,16 +719,16 @@ export function registerTodoTool(pi: ExtensionAPI): void {
 // ---------------------------------------------------------------------------
 
 export function registerTodosCommand(pi: ExtensionAPI): void {
-	pi.registerCommand("todos", {
+	pi.registerCommand(COMMAND_NAME, {
 		description: "Show all todos on the current branch, grouped by status",
 		handler: async (_args, ctx) => {
 			if (!ctx.hasUI) {
-				ctx.ui.notify("/todos requires interactive mode", "error");
+				ctx.ui.notify(ERR_REQUIRES_INTERACTIVE, "error");
 				return;
 			}
 			const visible = tasks.filter((t) => t.status !== "deleted");
 			if (visible.length === 0) {
-				ctx.ui.notify("No todos yet. Ask the agent to add some!", "info");
+				ctx.ui.notify(MSG_NO_TODOS, "info");
 				return;
 			}
 

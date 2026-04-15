@@ -11,7 +11,7 @@
  */
 
 import type { ExtensionAPI } from "@mariozechner/pi-coding-agent";
-import { registerTodoTool, registerTodosCommand, reconstructTodoState } from "./todo.js";
+import { TOOL_NAME, registerTodoTool, registerTodosCommand, reconstructTodoState } from "./todo.js";
 import { TodoOverlay } from "./todo-overlay.js";
 
 export default function (pi: ExtensionAPI) {
@@ -48,7 +48,7 @@ export default function (pi: ExtensionAPI) {
     // Reads getTodos() at render time; do NOT call reconstructTodoState here
     // (branch is stale — message_end runs after tool_execution_end).
     pi.on("tool_execution_end", async (event) => {
-        if (event.toolName !== "todo" || event.isError) return;
+        if (event.toolName !== TOOL_NAME || event.isError) return;
         todoOverlay?.update();
     });
 }
