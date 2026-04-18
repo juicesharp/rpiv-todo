@@ -1,5 +1,7 @@
 # rpiv-todo
 
+> **Moved to [`juicesharp/rpiv-mono`](https://github.com/juicesharp/rpiv-mono).** This package now lives at [`packages/rpiv-todo`](https://github.com/juicesharp/rpiv-mono/tree/main/packages/rpiv-todo) inside the rpiv-mono monorepo. Still published as `@juicesharp/rpiv-todo` on npm (no install change). New issues and PRs belong on `rpiv-mono`; this repo is read-only going forward.
+
 Pi extension that registers the `todo` tool, `/todos` slash command, and a
 persistent TodoOverlay widget above the editor. Replaces Claude Code's
 TaskCreate/TaskUpdate tool family.
